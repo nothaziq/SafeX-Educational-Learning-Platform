@@ -5,17 +5,17 @@ interface StatCardProps {
 }
 
 const accentStyles: Record<StatCardProps["accent"], { border: string; text: string }> = {
-  kids: { border: "border-l-[#E8A33D]", text: "text-[#E8A33D]" },
-  general: { border: "border-l-[#1F8A8C]", text: "text-[#1F8A8C]" },
-  admin: { border: "border-l-[#3B4A6B]", text: "text-[#3B4A6B]" },
-  alert: { border: "border-l-[#C2542B]", text: "text-[#C2542B]" },
+  kids: { border: "border-l-warning", text: "text-warning" },
+  general: { border: "border-l-success", text: "text-success" },
+  admin: { border: "border-l-primary", text: "text-primary" },
+  alert: { border: "border-l-danger", text: "text-danger" },
 };
 
 export function StatCard({ label, value, accent }: StatCardProps) {
   const styles = accentStyles[accent];
   return (
-    <div className={`rounded-2xl border border-slate-200 border-l-4 ${styles.border} bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.05)]`}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">{label}</p>
+    <div className={`rounded-card border border-border border-l-4 ${styles.border} bg-surface p-4 shadow-soft transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-floating`}>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-muted">{label}</p>
       <p className={`mt-2 text-3xl font-semibold tracking-tight ${styles.text}`}>
         {value.toLocaleString()}
       </p>

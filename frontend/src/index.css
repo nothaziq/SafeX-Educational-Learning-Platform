@@ -2,12 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --safex-background: 248 250 252;
+  --safex-surface: 255 255 255;
+  --safex-sidebar: 17 24 39;
+  --safex-primary: 79 70 229;
+  --safex-primary-hover: 67 56 202;
+  --safex-success: 16 185 129;
+  --safex-success-strong: 20 184 166;
+  --safex-warning: 245 158 11;
+  --safex-warning-soft: 251 146 60;
+  --safex-danger: 239 68 68;
+  --safex-info: 14 165 233;
+  --safex-info-soft: 56 189 248;
+  --safex-heading: 15 23 42;
+  --safex-body: 71 85 105;
+  --safex-muted: 148 163 184;
+  --safex-border: 226 232 240;
+}
+
 body {
   font-family: "Segoe UI", "Inter", system-ui, sans-serif;
-  background: #f8fafc;
-  color: #0f172a;
+  background: rgb(var(--safex-background));
+  color: rgb(var(--safex-heading));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgb(var(--safex-primary) / 0.16);
+  color: rgb(var(--safex-heading));
 }
