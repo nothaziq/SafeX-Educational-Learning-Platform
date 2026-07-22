@@ -3,5 +3,11 @@
 @tailwind utilities;
 
 body {
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Segoe UI", "Inter", system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
 }
