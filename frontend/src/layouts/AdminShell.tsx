@@ -73,8 +73,8 @@ export default function AdminShell() {
               <p className="truncate text-[13px] font-semibold text-[#e4e4e4]">Muhammad Haziq</p>
               <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-[#6a6a6a]">Admin</p>
             </div>
-            <button type="button" aria-label="Account" className="px-1.5 py-1 text-[#6a6a6a] transition-colors hover:text-white">
-              <i className="bi bi-three-dots" />
+            <button type="button" aria-label="Log out" title="Log out" className="px-1.5 py-1 text-[#6a6a6a] transition-colors hover:text-danger">
+              <i className="bi bi-door-open" />
             </button>
           </div>
         </div>
