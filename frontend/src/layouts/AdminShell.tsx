@@ -15,7 +15,13 @@ export default function AdminShell() {
 
   return (
     <div className="min-h-screen bg-background text-heading lg:flex">
-      <aside className="flex flex-col border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0)_30%),rgb(var(--safex-sidebar))] text-white shadow-shell lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r lg:border-surface/10">
+      <aside
+        className="flex flex-col border-b border-border text-white shadow-shell lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r lg:border-surface/10"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0) 30%), rgb(var(--safex-sidebar))",
+        }}
+      >
         <div className="flex items-center gap-3 border-b border-white/10 px-5 py-5 lg:px-6">
           <div className="relative flex h-10 w-10 shrink-0 items-center justify-center bg-primary text-sm font-bold shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),3px_3px_0_0_#1a1a1a]">
             <span className="font-mono text-[13px] font-bold tracking-wide">
