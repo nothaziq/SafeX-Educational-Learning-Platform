@@ -22,13 +22,13 @@ export default {
         border: "rgb(var(--safex-border) / <alpha-value>)",
       },
       borderRadius: {
-        card: "20px",
+        card: "6px",
       },
       boxShadow: {
-        shell: "0 24px 80px rgba(15, 23, 42, 0.08)",
-        card: "0 18px 50px rgba(15, 23, 42, 0.06)",
-        soft: "0 12px 30px rgba(15, 23, 42, 0.05)",
-        floating: "0 22px 60px rgba(79, 70, 229, 0.16)",
+        shell: "0 24px 80px rgba(20, 10, 30, 0.10)",
+        card: "0 18px 50px rgba(20, 10, 30, 0.10)",
+        soft: "0 12px 30px rgba(20, 10, 30, 0.08)",
+        floating: "0 22px 60px rgba(160, 42, 104, 0.18)",
       },
     },
   },

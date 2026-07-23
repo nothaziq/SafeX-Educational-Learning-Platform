@@ -1,8 +1,8 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 const navItems = [
-  { to: "/dashboard", label: "Admin Dashboard" },
-  { to: "/statistics", label: "Statistics Panel" },
+  { to: "/dashboard", label: "Dashboard", icon: "bi-columns-gap" },
+  { to: "/statistics", label: "Statistics Panel", icon: "bi-bar-chart-line" },
 ];
 
 export default function AdminShell() {
@@ -11,78 +11,87 @@ export default function AdminShell() {
 
   return (
     <div className="min-h-screen bg-background text-heading lg:flex">
-      <aside className="border-b border-border bg-sidebar text-white shadow-shell lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r lg:border-surface/10">
-        <div className="flex items-center gap-3 px-5 py-5 lg:px-6">
-          <div className="flex h-11 w-11 items-center justify-center rounded-card bg-gradient-to-br from-primary to-info text-sm font-bold shadow-floating">
-            SX
+      <aside className="border-b border-border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0)_30%),rgb(var(--safex-sidebar))] text-white shadow-shell lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:border-b-0 lg:border-r lg:border-surface/10">
+        <div className="flex items-center gap-3 border-b border-black/60 px-5 py-5 lg:px-6">
+          <div className="relative flex h-10 w-10 shrink-0 items-center justify-center bg-primary text-sm font-bold shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),3px_3px_0_0_#1a1a1a]">
+            <span className="font-mono text-[13px] font-bold tracking-wide">SX</span>
+            <span className="absolute right-1 top-1 h-[5px] w-[5px] rounded-full bg-white shadow-[0_0_0_2px_rgb(var(--safex-primary))]" />
           </div>
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-muted">SafeX</p>
-            <h1 className="text-lg font-semibold">Admin Panel</h1>
+          <div className="min-w-0">
+            <h1 className="truncate text-[15px] font-bold tracking-tight text-white">
+              SafeX<span className="font-medium text-muted">/Admin</span>
+            </h1>
+            <p className="mt-1 truncate text-[10px] uppercase tracking-[0.2em] text-muted">Educational Platform · v1.0</p>
           </div>
         </div>
 
-        <nav className="px-3 pb-4 lg:px-4">
-          <p className="px-3 pb-3 text-[11px] font-semibold uppercase tracking-[0.3em] text-muted">Navigation</p>
-          <div className="space-y-1">
+        <nav className="px-3 pb-4 pt-1 lg:px-3.5">
+          <p className="flex items-center gap-2 px-2.5 pb-2 pt-4 text-[10px] uppercase tracking-[0.24em] text-[#565656]">
+            <span className="font-mono tracking-[0.1em] text-[#3a3a3a]">01</span>
+            <span>Overview</span>
+          </p>
+          <div className="space-y-0.5">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
                   [
-                    "block rounded-card px-4 py-3 text-sm font-medium transition-all duration-300 ease-out",
+                    "flex items-center gap-3 border-l-2 px-2.5 py-2.5 text-[13px] font-normal leading-tight transition-colors duration-150",
                     isActive
-                      ? "bg-primary/15 text-white ring-1 ring-primary/30 shadow-soft"
-                      : "text-muted hover:bg-surface/8 hover:text-white hover:translate-x-0.5",
+                      ? "border-primary bg-[#131313] text-white"
+                      : "border-transparent text-[#a0a0a0] hover:bg-[#0f0f0f] hover:text-white",
                   ].join(" ")
                 }
               >
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    <span
+                      className={[
+                        "grid h-[26px] w-[26px] shrink-0 place-items-center border text-[15px] transition-colors duration-150",
+                        isActive ? "border-[#2a1220] bg-[#170b12] text-primary" : "border-transparent text-[#7a7a7a]",
+                      ].join(" ")}
+                    >
+                      <i className={`bi ${item.icon}`} />
+                    </span>
+                    <span className="min-w-0 flex-1 truncate">{item.label}</span>
+                  </>
+                )}
               </NavLink>
             ))}
           </div>
         </nav>
 
-        <div className="mt-auto px-4 pb-4">
-          <div className="rounded-card border border-surface/10 bg-surface/6 p-4 shadow-soft backdrop-blur">
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-surface/10 text-sm font-semibold text-white ring-1 ring-surface/10">
-                MH
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-white">Muhammad Haziq</p>
-                <p className="text-xs text-muted">Admin profile</p>
-              </div>
+        <div className="mt-auto border-t border-black/60 px-3 pb-1 pt-2.5 lg:px-3.5">
+          <div className="flex items-center gap-2.5 border border-[#171717] bg-[#0d0d0d] px-2.5 py-2.5">
+            <div className="grid h-8 w-8 shrink-0 place-items-center bg-primary text-[13px] font-semibold text-white">
+              MH
             </div>
-
-            <button
-              type="button"
-              className="mt-4 flex w-full items-center justify-center gap-2 rounded-card border border-border bg-surface px-4 py-3 text-sm font-medium text-heading transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/20 hover:bg-background hover:text-primary-hover"
-            >
-              <span className="text-base">⎋</span>
-              Sign out / Logout
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[13px] font-semibold text-[#e4e4e4]">Muhammad Haziq</p>
+              <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-[#6a6a6a]">Admin</p>
+            </div>
+            <button type="button" aria-label="Account" className="px-1.5 py-1 text-[#6a6a6a] transition-colors hover:text-white">
+              <i className="bi bi-three-dots" />
             </button>
           </div>
         </div>
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-20 border-b border-border bg-surface/90 shadow-[0_1px_0_rgba(226,232,240,0.8)] backdrop-blur">
-          <div className="flex items-center justify-between gap-4 px-4 py-4 md:px-6">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-muted">Current page</p>
-              <h2 className="mt-1 text-lg font-semibold text-heading">{currentLabel}</h2>
+        <header className="sticky top-0 z-20 flex h-[60px] items-center gap-4 border-b border-border bg-background/88 px-4 backdrop-blur-md md:px-6">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-body">{currentLabel}</p>
+          <div className="flex-1" />
+          <span className="hidden border border-border px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-body sm:inline">
+            Role: Admin
+          </span>
+          <div className="flex items-center gap-2">
+            <div className="hidden text-right sm:block">
+              <p className="text-[13px] font-semibold text-heading">Muhammad Haziq</p>
+              <p className="text-[11px] text-muted">Admin</p>
             </div>
-
-            <div className="flex items-center gap-3">
-              <div className="hidden text-right sm:block">
-                <p className="text-sm font-semibold text-heading">Muhammad Haziq</p>
-                <p className="text-xs text-muted">Admin</p>
-              </div>
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-primary to-info text-sm font-bold text-white shadow-floating ring-1 ring-primary/20">
-                MH
-              </div>
+            <div className="grid h-9 w-9 shrink-0 place-items-center bg-primary text-[13px] font-semibold text-white">
+              MH
             </div>
           </div>
         </header>

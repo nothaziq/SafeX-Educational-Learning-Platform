@@ -18,22 +18,28 @@ export default function Dashboard() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45 }}
-          className="overflow-hidden rounded-card border border-border bg-surface shadow-shell backdrop-blur transition-all duration-300 ease-out"
+          className="overflow-hidden rounded-card border border-border/70 bg-surface/55 shadow-shell backdrop-blur-xl transition-all duration-300 ease-out"
         >
-          <div className="flex flex-col gap-4 border-b border-border px-5 py-5 md:flex-row md:items-end md:justify-between md:px-6">
+          <div className="flex flex-col gap-4 border-b border-border/60 px-5 py-5 md:flex-row md:items-end md:justify-between md:px-6">
             <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.35em] text-primary">SafeX Admin</p>
-              <h1 className="mt-2 text-2xl font-semibold tracking-tight text-heading md:text-3xl">Admin Dashboard & Statistics Panel</h1>
+              <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.28em] text-primary before:h-px before:w-[22px] before:bg-primary">
+                SafeX Admin
+              </p>
+              <h1 className="mt-2.5 text-2xl font-semibold tracking-tight text-heading md:text-3xl">Admin Dashboard &amp; Statistics Panel</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-body">
                 Real-time visibility into videos, recommendations, user activity, and weekly publishing trends.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs font-medium">
-              <span className="rounded-full border border-border bg-background px-3 py-1.5 text-body">
+            <div className="flex flex-wrap items-center gap-2.5 text-[11px] font-medium">
+              <span className="border border-border px-2.5 py-1.5 uppercase tracking-[0.08em] text-body">
                 {new Date().toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" })}
               </span>
-              <span className={`rounded-full px-3 py-1.5 ${isDemoMode ? "bg-warning/15 text-warning" : "bg-success/15 text-success"}`}>
+              <span
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1.5 uppercase tracking-[0.08em] before:h-[6px] before:w-[6px] before:bg-current ${
+                  isDemoMode ? "bg-[color-mix(in_oklab,rgb(var(--safex-warning))_14%,transparent)] text-warning" : "bg-[color-mix(in_oklab,rgb(var(--safex-success))_14%,transparent)] text-success"
+                }`}
+              >
                 {isDemoMode ? "Demo fallback data" : "Live API data"}
               </span>
             </div>
@@ -52,20 +58,23 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.12 }}
-            className="rounded-card border border-border bg-surface p-5 shadow-card transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-floating"
+            className="rounded-card border border-border/70 bg-surface/55 p-5 shadow-card backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-px hover:shadow-floating"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-muted">Recent activity</p>
-            <h2 className="mt-2 text-lg font-semibold tracking-tight text-heading">Latest system updates</h2>
-            <div className="mt-5 divide-y divide-border">
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-primary">Recent activity</p>
+            <h2 className="mt-1.5 text-lg font-semibold tracking-tight text-heading">Latest system updates</h2>
+            <div className="mt-5 divide-y divide-border/60">
               {recentActivities.map((activity) => (
                 <div key={`${activity.userName}-${activity.timestamp}`} className="flex items-start justify-between gap-4 py-4">
-                  <div>
-                    <p className="text-sm text-body">
-                      <span className="font-semibold text-heading">{activity.userName}</span> {activity.action}
-                    </p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted">Activity feed</p>
+                  <div className="flex items-start gap-3">
+                    <i className="bi bi-dot mt-0.5 text-lg text-primary" />
+                    <div>
+                      <p className="text-sm text-body">
+                        <span className="font-semibold text-heading">{activity.userName}</span> {activity.action}
+                      </p>
+                      <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-muted">Activity feed</p>
+                    </div>
                   </div>
-                  <span className="shrink-0 rounded-full bg-background px-3 py-1 text-[11px] font-medium text-body ring-1 ring-border">
+                  <span className="shrink-0 border border-border px-2 py-1 text-[10px] font-medium uppercase tracking-[0.08em] text-body">
                     {formatShortTimestamp(activity.timestamp)}
                   </span>
                 </div>
@@ -77,16 +86,16 @@ export default function Dashboard() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.16 }}
-            className="rounded-card border border-border bg-surface p-5 text-heading shadow-card transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-floating"
+            className="rounded-card border border-border/70 bg-surface/55 p-5 text-heading shadow-card backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-px hover:shadow-floating"
           >
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-primary">Overview snapshot</p>
-            <h2 className="mt-2 text-lg font-semibold tracking-tight text-heading">Admin dashboard</h2>
+            <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-primary">Overview snapshot</p>
+            <h2 className="mt-1.5 text-lg font-semibold tracking-tight text-heading">Admin dashboard</h2>
             <ul className="mt-5 space-y-4 text-sm leading-6 text-body">
-              <li>Summary counts for the platform content and user base.</li>
-              <li>Recent actions that help admins spot activity at a glance.</li>
-              <li>Quick status view for pending recommendations and published videos.</li>
+              <li className="flex gap-2.5"><i className="bi bi-check2 mt-0.5 text-primary" />Summary counts for the platform content and user base.</li>
+              <li className="flex gap-2.5"><i className="bi bi-check2 mt-0.5 text-primary" />Recent actions that help admins spot activity at a glance.</li>
+              <li className="flex gap-2.5"><i className="bi bi-check2 mt-0.5 text-primary" />Quick status view for pending recommendations and published videos.</li>
             </ul>
-            <div className="mt-6 rounded-card border border-border bg-background p-4 text-sm text-body">
+            <div className="mt-6 border border-dashed border-border bg-background/60 p-4 text-sm text-body">
               The dashboard now lives on its own page, separate from the statistics panel.
             </div>
           </motion.section>
@@ -108,14 +117,14 @@ function SummaryTile({
   sublabel: string;
 }) {
   const toneStyles = {
-    admin: "from-primary to-primary-hover text-white",
-    kids: "from-warning to-warning-soft text-heading",
-    general: "from-success to-success-strong text-white",
-    alert: "from-danger to-warning-soft text-white",
+    admin: "bg-primary text-white",
+    kids: "bg-warning text-white",
+    general: "bg-success text-white",
+    alert: "bg-danger text-white",
   };
 
   return (
-    <div className={`group rounded-card bg-gradient-to-br ${toneStyles[tone]} p-5 shadow-soft transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-floating`}>
+    <div className={`group rounded-card ${toneStyles[tone]} p-5 shadow-soft transition-all duration-300 ease-out hover:-translate-y-px hover:shadow-floating`}>
       <p className="text-[11px] font-semibold uppercase tracking-[0.28em] opacity-80">{label}</p>
       <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{value.toLocaleString()}</p>
       <p className="mt-2 text-sm leading-6 opacity-85">{sublabel}</p>

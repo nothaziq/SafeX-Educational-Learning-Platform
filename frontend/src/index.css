@@ -3,30 +3,42 @@
 @tailwind utilities;
 
 :root {
-  --safex-background: 248 250 252;
+  /* Editorial Noir palette, matched to the Video Management module's design system */
+  --safex-background: 244 244 244;
   --safex-surface: 255 255 255;
-  --safex-sidebar: 17 24 39;
-  --safex-primary: 79 70 229;
-  --safex-primary-hover: 67 56 202;
-  --safex-success: 16 185 129;
-  --safex-success-strong: 20 184 166;
-  --safex-warning: 245 158 11;
-  --safex-warning-soft: 251 146 60;
-  --safex-danger: 239 68 68;
-  --safex-info: 14 165 233;
-  --safex-info-soft: 56 189 248;
-  --safex-heading: 15 23 42;
-  --safex-body: 71 85 105;
-  --safex-muted: 148 163 184;
-  --safex-border: 226 232 240;
+  --safex-sidebar: 10 10 10;
+  --safex-primary: 160 42 104;
+  --safex-primary-hover: 122 31 79;
+  --safex-success: 31 74 44;
+  --safex-success-strong: 22 101 52;
+  --safex-warning: 107 90 16;
+  --safex-warning-soft: 156 130 24;
+  --safex-danger: 107 26 26;
+  --safex-info: 90 26 62;
+  --safex-info-soft: 122 31 79;
+  --safex-heading: 10 10 10;
+  --safex-body: 90 90 90;
+  --safex-muted: 138 138 138;
+  --safex-border: 216 216 216;
+
+  /* ambient blobs behind the app - the frost source for glass surfaces */
+  --safex-blob-1: #e6b8d4;
+  --safex-blob-2: #c9c1e8;
+  --safex-blob-3: #ffffff;
 }
 
 body {
-  font-family: "Segoe UI", "Inter", system-ui, sans-serif;
-  background: rgb(var(--safex-background));
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  background:
+    radial-gradient(60vmax 60vmax at 12% 8%, color-mix(in oklab, var(--safex-blob-1) 55%, transparent), transparent 60%),
+    radial-gradient(50vmax 50vmax at 88% 96%, color-mix(in oklab, var(--safex-blob-2) 55%, transparent), transparent 60%),
+    radial-gradient(40vmax 40vmax at 92% 12%, color-mix(in oklab, var(--safex-blob-3) 40%, transparent), transparent 65%),
+    rgb(var(--safex-background));
+  background-attachment: fixed;
   color: rgb(var(--safex-heading));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
 }
 
 html {
@@ -34,6 +46,6 @@ html {
 }
 
 ::selection {
-  background: rgb(var(--safex-primary) / 0.16);
-  color: rgb(var(--safex-heading));
+  background: rgb(var(--safex-primary));
+  color: #fff;
 }
