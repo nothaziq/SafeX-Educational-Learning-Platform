@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+[data-theme="light"] {
   /* Editorial Noir palette, matched to the Video Management module's design system */
   --safex-background: 244 244 244;
   --safex-surface: 255 255 255;
@@ -25,6 +26,33 @@
   --safex-blob-1: #e6b8d4;
   --safex-blob-2: #c9c1e8;
   --safex-blob-3: #ffffff;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --safex-background: 10 10 10;
+  --safex-surface: 17 17 17;
+  --safex-sidebar: 5 5 5;
+  --safex-primary: 199 59 131;
+  --safex-primary-hover: 160 42 104;
+  --safex-success: 109 208 138;
+  --safex-success-strong: 88 224 150;
+  --safex-warning: 224 196 88;
+  --safex-warning-soft: 230 200 110;
+  --safex-danger: 224 122 122;
+  --safex-info: 224 121 183;
+  --safex-info-soft: 199 59 131;
+  --safex-heading: 237 237 237;
+  --safex-body: 154 154 154;
+  --safex-muted: 106 106 106;
+  --safex-border: 35 35 35;
+
+  --safex-blob-1: #3a0f2a;
+  --safex-blob-2: #1a1230;
+  --safex-blob-3: #0a0a0a;
+
+  color-scheme: dark;
 }
 
 body {
@@ -39,6 +67,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: "ss01", "cv11";
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 html {

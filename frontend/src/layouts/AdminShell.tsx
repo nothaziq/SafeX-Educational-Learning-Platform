@@ -1,4 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const navItems = [
   { to: "/dashboard", label: "Dashboard", icon: "bi-columns-gap" },
@@ -7,6 +8,7 @@ const navItems = [
 
 export default function AdminShell() {
   const location = useLocation();
+  const { theme, toggle } = useTheme();
   const currentLabel = navItems.find((item) => location.pathname.startsWith(item.to))?.label ?? "SafeX Admin";
 
   return (
@@ -82,6 +84,15 @@ export default function AdminShell() {
         <header className="sticky top-0 z-20 flex h-[60px] items-center gap-4 border-b border-border bg-background/88 px-4 backdrop-blur-md md:px-6">
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-body">{currentLabel}</p>
           <div className="flex-1" />
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label="Toggle theme"
+            title="Toggle theme"
+            className="grid h-9 w-9 place-items-center border border-border text-body transition-colors duration-150 hover:border-primary/50 hover:bg-surface/70 hover:text-heading"
+          >
+            <i className={`bi ${theme === "dark" ? "bi-sun" : "bi-moon-stars"}`} />
+          </button>
           <span className="hidden border border-border px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-body sm:inline">
             Role: Admin
           </span>

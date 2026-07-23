@@ -33,18 +33,24 @@ export function WeeklyUploadsChart({ data }: { data: WeeklyUploadPoint[] }) {
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="uploadFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="rgb(160 42 104)" stopOpacity={0.3} />
-                  <stop offset="100%" stopColor="rgb(160 42 104)" stopOpacity={0} />
+                  <stop offset="0%" stopColor="rgb(var(--safex-primary))" stopOpacity={0.3} />
+                  <stop offset="100%" stopColor="rgb(var(--safex-primary))" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgb(228 228 228)" vertical={false} />
-              <XAxis dataKey="weekLabel" tick={{ fontSize: 11, fill: "rgb(138 138 138)" }} axisLine={false} tickLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: "rgb(138 138 138)" }} axisLine={false} tickLine={false} allowDecimals={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="rgb(var(--safex-border))" vertical={false} />
+              <XAxis dataKey="weekLabel" tick={{ fontSize: 11, fill: "rgb(var(--safex-muted))" }} axisLine={false} tickLine={false} />
+              <YAxis tick={{ fontSize: 11, fill: "rgb(var(--safex-muted))" }} axisLine={false} tickLine={false} allowDecimals={false} />
               <Tooltip
-                contentStyle={{ borderRadius: 2, borderColor: "rgb(216 216 216)", fontSize: 12, backgroundColor: "#FFFFFF" }}
-                labelStyle={{ color: "rgb(10 10 10)", fontWeight: 600 }}
+                contentStyle={{
+                  borderRadius: 2,
+                  borderColor: "rgb(var(--safex-border))",
+                  fontSize: 12,
+                  backgroundColor: "rgb(var(--safex-surface))",
+                  color: "rgb(var(--safex-heading))",
+                }}
+                labelStyle={{ color: "rgb(var(--safex-heading))", fontWeight: 600 }}
               />
-              <Area type="monotone" dataKey="uploadCount" stroke="rgb(160 42 104)" strokeWidth={2.5} fill="url(#uploadFill)" />
+              <Area type="monotone" dataKey="uploadCount" stroke="rgb(var(--safex-primary))" strokeWidth={2.5} fill="url(#uploadFill)" />
             </AreaChart>
           </ResponsiveContainer>
         )}
