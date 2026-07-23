@@ -79,4 +79,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 
+if (app.Environment.IsDevelopment())
+{
+    await SafeX.API.SeedData.InitializeAsync(app.Services);
+}
 app.Run();
