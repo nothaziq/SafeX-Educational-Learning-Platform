@@ -19,7 +19,7 @@ export default function AdminShell() {
       >
         <div className="flex items-center gap-3 border-b border-border px-5 py-5 lg:px-6">
           <div className="relative flex h-10 w-10 shrink-0 items-center justify-center bg-primary text-sm font-bold shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12),3px_3px_0_0_#1a1a1a]">
-            <span className="font-mono text-[13px] font-bold tracking-wide">SX</span>
+            <span className="font-mono text-[13px] font-bold tracking-wide text-white">SX</span>
             <span className="absolute right-1 top-1 h-[5px] w-[5px] rounded-full bg-white shadow-[0_0_0_2px_rgb(var(--safex-primary))]" />
           </div>
           <div className="min-w-0">
