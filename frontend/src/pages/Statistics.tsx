@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useDashboard } from "../services/dashboardService";
 import { StatCard } from "../components/StatCard";
+import { SummaryTile } from "../components/SummaryTile";
 import { WeeklyUploadsChart } from "../components/WeeklyUploadsChart";
 import { fallbackDashboard } from "../types/dashboard";
 
@@ -10,7 +11,7 @@ const statCards = [
   { label: "General Videos", accent: "general" as const },
   { label: "Published Videos", accent: "admin" as const },
   { label: "Pending Recommendations", accent: "alert" as const },
-  { label: "Users", accent: "admin" as const },
+  { label: "Users", accent: "admin" as const, icon: "bi-person" },
   { label: "Categories", accent: "admin" as const },
 ];
 
@@ -59,10 +60,10 @@ export default function Statistics() {
         </motion.section>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          <SummaryTile label="Total Videos" value={summary.totalVideos} tone="admin" sublabel="All videos in the platform" />
-          <SummaryTile label="Pending Recommendations" value={summary.pendingRecommendations} tone="alert" sublabel="Awaiting admin review" />
-          <SummaryTile label="Published Videos" value={summary.publishedVideos} tone="general" sublabel="Available to learners" />
-          <SummaryTile label="Categories" value={summary.categories} tone="kids" sublabel="Content areas in SafeX" />
+          <SummaryTile label="Total Videos" value={summary.totalVideos} tone="admin" icon="bi-play-fill" sublabel="All videos in the platform" />
+          <SummaryTile label="Pending Recommendations" value={summary.pendingRecommendations} tone="alert" icon="bi-hourglass-split" sublabel="Awaiting admin review" />
+          <SummaryTile label="Published Videos" value={summary.publishedVideos} tone="general" icon="bi-check-circle" sublabel="Ready for learners" />
+          <SummaryTile label="Users" value={summary.users} tone="kids" icon="bi-person" sublabel="Active accounts in the system" />
         </div>
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-7">
@@ -77,7 +78,7 @@ export default function Statistics() {
                 transition={{ duration: 0.35, delay: index * 0.03 }}
                 className="xl:col-span-1"
               >
-                <StatCard label={card.label} value={value} accent={card.accent} />
+                <StatCard label={card.label} value={value} accent={card.accent} icon={"icon" in card ? card.icon : undefined} />
               </motion.div>
             );
           })}
@@ -119,33 +120,6 @@ export default function Statistics() {
           </motion.aside>
         </div>
       </div>
-    </div>
-  );
-}
-
-function SummaryTile({
-  label,
-  value,
-  tone,
-  sublabel,
-}: {
-  label: string;
-  value: number;
-  tone: "admin" | "kids" | "general" | "alert";
-  sublabel: string;
-}) {
-  const toneStyles = {
-    admin: "bg-primary text-white",
-    kids: "bg-warning text-white",
-    general: "bg-success text-white",
-    alert: "bg-danger text-white",
-  };
-
-  return (
-    <div className={`group rounded-card ${toneStyles[tone]} p-5 shadow-soft transition-all duration-300 ease-out hover:-translate-y-px hover:shadow-floating`}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] opacity-80">{label}</p>
-      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{value.toLocaleString()}</p>
-      <p className="mt-2 text-sm leading-6 opacity-85">{sublabel}</p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useDashboard } from "../services/dashboardService";
 import { fallbackDashboard } from "../types/dashboard";
+import { SummaryTile } from "../components/SummaryTile";
 
 export default function Dashboard() {
   const { data, isLoading, isError } = useDashboard();
@@ -25,7 +26,7 @@ export default function Dashboard() {
               <p className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.28em] text-primary before:h-px before:w-[22px] before:bg-primary">
                 SafeX Admin
               </p>
-              <h1 className="mt-2.5 text-2xl font-semibold tracking-tight text-heading md:text-3xl">Admin Dashboard &amp; Statistics Panel</h1>
+              <h1 className="mt-2.5 text-2xl font-semibold tracking-tight text-heading md:text-3xl">Admin Dashboard</h1>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-body">
                 Real-time visibility into videos, recommendations, user activity, and weekly publishing trends.
               </p>
@@ -46,10 +47,10 @@ export default function Dashboard() {
           </div>
 
           <div className="grid gap-4 px-5 py-5 md:grid-cols-2 xl:grid-cols-4 md:px-6">
-            <SummaryTile label="Total Videos" value={summary.totalVideos} tone="admin" sublabel="All content in the platform" />
-            <SummaryTile label="Pending Recommendations" value={summary.pendingRecommendations} tone="alert" sublabel="Awaiting admin review" />
-            <SummaryTile label="Published Videos" value={summary.publishedVideos} tone="general" sublabel="Ready for learners" />
-            <SummaryTile label="Users" value={summary.users} tone="kids" sublabel="Active accounts in the system" />
+            <SummaryTile label="Total Videos" value={summary.totalVideos} tone="admin" icon="bi-play-fill" sublabel="All content in the platform" />
+            <SummaryTile label="Pending Recommendations" value={summary.pendingRecommendations} tone="alert" icon="bi-hourglass-split" sublabel="Awaiting admin review" />
+            <SummaryTile label="Published Videos" value={summary.publishedVideos} tone="general" icon="bi-check-circle" sublabel="Ready for learners" />
+            <SummaryTile label="Users" value={summary.users} tone="kids" icon="bi-person" sublabel="Active accounts in the system" />
           </div>
         </motion.section>
 
@@ -101,33 +102,6 @@ export default function Dashboard() {
           </motion.section>
         </div>
       </div>
-    </div>
-  );
-}
-
-function SummaryTile({
-  label,
-  value,
-  tone,
-  sublabel,
-}: {
-  label: string;
-  value: number;
-  tone: "admin" | "kids" | "general" | "alert";
-  sublabel: string;
-}) {
-  const toneStyles = {
-    admin: "bg-primary text-white",
-    kids: "bg-warning text-white",
-    general: "bg-success text-white",
-    alert: "bg-danger text-white",
-  };
-
-  return (
-    <div className={`group rounded-card ${toneStyles[tone]} p-5 shadow-soft transition-all duration-300 ease-out hover:-translate-y-px hover:shadow-floating`}>
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] opacity-80">{label}</p>
-      <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{value.toLocaleString()}</p>
-      <p className="mt-2 text-sm leading-6 opacity-85">{sublabel}</p>
     </div>
   );
 }

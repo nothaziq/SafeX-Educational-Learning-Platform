@@ -2,6 +2,7 @@ interface StatCardProps {
   label: string;
   value: number;
   accent: "kids" | "general" | "admin" | "alert";
+  icon?: string;
 }
 
 const accentStyles: Record<StatCardProps["accent"], { border: string; text: string; icon: string }> = {
@@ -11,13 +12,14 @@ const accentStyles: Record<StatCardProps["accent"], { border: string; text: stri
   alert: { border: "border-l-danger", text: "text-danger", icon: "bi-hourglass-split" },
 };
 
-export function StatCard({ label, value, accent }: StatCardProps) {
+export function StatCard({ label, value, accent, icon }: StatCardProps) {
   const styles = accentStyles[accent];
+  const iconClass = icon ?? styles.icon;
   return (
     <div className={`group relative overflow-hidden rounded-card border border-border/70 border-l-2 ${styles.border} bg-surface/55 p-[18px] shadow-soft backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-px hover:bg-surface/70 hover:shadow-floating`}>
       <div className="flex items-center justify-between text-muted">
         <p className="text-[11px] font-semibold uppercase tracking-[0.18em]">{label}</p>
-        <i className={`bi ${styles.icon} text-[15px]`} />
+        <i className={`bi ${iconClass} text-[15px]`} />
       </div>
       <p className={`mt-1 text-[1.9rem] font-semibold leading-none tracking-tight tabular-nums ${styles.text}`}>
         {value.toLocaleString()}
